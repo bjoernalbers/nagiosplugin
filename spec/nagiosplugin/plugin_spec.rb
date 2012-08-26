@@ -4,6 +4,27 @@ describe NagiosPlugin::Plugin do
   before do
     class MyPlugin < NagiosPlugin::Plugin; end
     @plugin = MyPlugin.new
+
+    class MergedOptionsPlugin < NagiosPlugin::Plugin
+      def initialize(options, &blk)
+        super(options, &blk)
+        @foo = options[:foo]
+      end
+      attr_reader :warn, :crit, :reverse, :foo
+    end
+    @plugin_with_options = MergedOptionsPlugin.new({:warn => 5, :crit => 1, :reverse => true, :foo => "bar"})  do |opts|
+      opts.on('--foo <s>', 'A test option.') do |s|
+        options[:foo] = s
+      end
+    end
+  end
+
+  describe '#initialize' do
+    it "should have attributes" do
+      @plugin_with_options.should satisfy { |o|
+        o.warn == 5 and o.crit == 1 and o.reverse and o.foo == "bar"
+      }
+    end
   end
 
   describe '#run' do
