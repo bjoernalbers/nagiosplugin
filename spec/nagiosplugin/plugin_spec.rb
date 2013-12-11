@@ -130,9 +130,15 @@ module NagiosPlugin
       end
 
       it 'includes a custom plugin message if present' do
-        plugin.should_receive(:message).and_return('ALL U CAN EAT!')
+        plugin.stub(:message => 'ALL U CAN EAT!')
         expect(plugin.send(:nagios_plugin_output)).to match(/: ALL U CAN EAT!$/)
       end
+
+      it 'should not append message if message is empty' do
+        plugin.stub(:message => '')
+        expect(plugin.send(:nagios_plugin_output)).not_to match(/:/)
+      end
+
     end
   end
 end

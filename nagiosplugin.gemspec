@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description = 'The one Nagios Plugin framework, forged in the fires of Mount Doom.'
   spec.license     = 'MIT'
 
-  spec.files         = `git ls-files`.split("\n")
+  spec.files         = `git ls-files`.split("\n") - %w(.gitignore .rbenv-version .travis.yml)
   spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_paths = ['lib']

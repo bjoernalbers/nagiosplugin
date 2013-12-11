@@ -26,7 +26,7 @@ module NagiosPlugin
     def nagios_plugin_output
       output = [nagios_plugin_service] << ' '
       output << nagios_plugin_status.to_s.upcase
-      output << ': ' + message if respond_to?(:message)
+      output << ': ' + message if ( respond_to?(:message) && !message.empty? )
       output.join
     end
 
