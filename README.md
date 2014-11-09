@@ -3,7 +3,6 @@
 The one Nagios Plugin framework, forged in the fires of Mount Doom.
 
 [![Gem Version](https://badge.fury.io/rb/nagiosplugin.svg)](http://badge.fury.io/rb/nagiosplugin)
-
 [![Build Status](https://secure.travis-ci.org/bjoernalbers/nagiosplugin.png)](http://travis-ci.org/bjoernalbers/nagiosplugin)
 
 ## Introduction
