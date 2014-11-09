@@ -2,12 +2,9 @@
 
 The one Nagios Plugin framework, forged in the fires of Mount Doom.
 
-[![Build Status](https://secure.travis-ci.org/bjoernalbers/nagiosplugin.png)](http://travis-ci.org/bjoernalbers/nagiosplugin)
+[![Gem Version](https://badge.fury.io/rb/nagiosplugin.svg)](http://badge.fury.io/rb/nagiosplugin)
 
-**NOTE: The API has changed since version 2.1 (see issues
-[#2](https://github.com/bjoernalbers/nagiosplugin/issues/2)
-and
-[#4](https://github.com/bjoernalbers/nagiosplugin/issues/4))!!!**
+[![Build Status](https://secure.travis-ci.org/bjoernalbers/nagiosplugin.png)](http://travis-ci.org/bjoernalbers/nagiosplugin)
 
 ## Introduction
 
@@ -66,7 +63,7 @@ doesn't use that either), parse CLI options, etc.
 ### Step 2: Provide some context via status message (optionally).
 
 Ask yourself what might be important to know (and fits into a text
-message) when Nagios just send you an alert in the middle of the night.
+message) when Nagios send you an alert in the middle of the night.
 
 ```Ruby
 def message
@@ -78,11 +75,15 @@ end
 
 ### Step 3: Perform the actual check.
 
-In your binary then call the build-in class method `check` and you're done:
+In your binary then just call the build-in class method `check` and you're done:
 
 ```Ruby
-MyFancyPlugin.check
+MyFancyPlugin.check(options)
 ```
+
+(Optional arguments, i.e. from your favorite [CLI option
+parser](https://www.ruby-toolbox.com/categories/CLI_Option_Parsers), will be
+forwarded to you initializer method.)
 
 This will output the check result and exits in compliance with the
 official
@@ -91,17 +92,6 @@ guidelines](http://nagiosplug.sourceforge.net/developer-guidelines.html)
 
 If anything funky happens in your code: NagiosPlugin does a "blind
 rescue mission" and transforms any execptions to an unknown status.
-
-
-## One more thing...
-
-The API changed completely compared to v1.3 as well as the default command
-line options (they are gone).
-I suggest that you use 3rd party [CLI Option
-Parsers](https://www.ruby-toolbox.com/categories/CLI_Option_Parsers)
-because everyone has different preferences on this.
-
-Please let me know if you find this usefull or if you want to contribute!
 
 
 ## Note on Patches/Pull Requests

@@ -28,6 +28,11 @@ module NagiosPlugin
         expect(Plugin).to have_received(:exit).with(42)
       end
 
+      it 'passed all arguments to the initializer' do
+        Plugin.check(42, fancy: true)
+        expect(Plugin).to have_received(:new).with(42, fancy: true)
+      end
+
       context 'when an exception was raised' do
         let(:exception) { StandardError.new('Oops!') }
 

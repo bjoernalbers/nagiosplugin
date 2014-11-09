@@ -8,8 +8,8 @@ module NagiosPlugin
     }
 
     class << self
-      def check
-        plugin = new
+      def check(*args)
+        plugin = new(*args)
         puts plugin.nagios_plugin_output
         exit plugin.nagios_plugin_exit_code
       rescue => e
