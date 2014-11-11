@@ -11,7 +11,7 @@ A Nagios Plugin framework that fits on a folded napkin.
 *Nagios::Plugin* helps you write [Nagios](http://www.nagios.org/) Plugins with Ruby:
 It ensures that your plugin returns a [compliant](http://nagiosplug.sourceforge.net/developer-guidelines.html) exit code and status output.
 
-Besides, it is [easy to understand](https://github.com/bjoernalbers/nagiosplugin/blob/master/lib/nagiosplugin/plugin.rb) and comes with automated tests.
+Besides, it is [easy to understand](https://github.com/bjoernalbers/nagiosplugin/blob/master/lib/nagios/plugin.rb) and comes with automated tests.
 
 
 ## Installation
