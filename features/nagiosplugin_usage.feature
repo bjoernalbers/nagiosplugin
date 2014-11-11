@@ -1,15 +1,15 @@
 Feature: NagiosPlugin Usage
 
-  In order to write awesome Nagios Plugins with minimal effort
+  In order to write Nagios Plugins with Ruby
   As a busy (developer|sysadmin|devop|hacker|superhero|rockstar)
-  I want to use the one NagiosPlugin framework
+  I want to use the one Nagios Plugin framework.
 
   Scenario Outline: Subclass from NagiosPlugin
-    Given a file named "check_fancy.rb" with:
+    Given a file named "check_chunky_bacon.rb" with:
       """
       require 'nagiosplugin'
 
-      class FancyPlugin < NagiosPlugin::Plugin
+      class ChunkyBacon < Nagios::Plugin
         def critical?
           <critical>
         end
@@ -23,14 +23,14 @@ Feature: NagiosPlugin Usage
         end
 
         def message
-          'answer is 42'
+          42
         end
       end
 
-      FancyPlugin.check
+      ChunkyBacon.run!
       """
-    When I run `ruby check_fancy.rb`
-    Then the exit status should be <code>
+    When I run `ruby check_chunky_bacon.rb`
+    Then the exit status should be <es>
     And the stdout should contain exactly:
       """
       <stdout>
@@ -38,8 +38,8 @@ Feature: NagiosPlugin Usage
       """
 
     Examples:
-     | critical | warning | ok    | status   | code | stdout                       |
-     | true     | true    | true  | CRITICAL | 2    | FANCY CRITICAL: answer is 42 |
-     | false    | true    | true  | WARNING  | 1    | FANCY WARNING: answer is 42  |
-     | false    | false   | true  | OK       | 0    | FANCY OK: answer is 42       |
-     | false    | false   | false | UNKNOWN  | 3    | FANCY UNKNOWN: answer is 42  |
+     | critical | warning | ok    | status   | es | stdout                   |
+     | true     | true    | true  | CRITICAL | 2  | CHUNKYBACON CRITICAL: 42 |
+     | false    | true    | true  | WARNING  | 1  | CHUNKYBACON WARNING: 42  |
+     | false    | false   | true  | OK       | 0  | CHUNKYBACON OK: 42       |
+     | false    | false   | false | UNKNOWN  | 3  | CHUNKYBACON UNKNOWN: 42  |

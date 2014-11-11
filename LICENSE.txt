@@ -1,4 +1,4 @@
-Copyright (c) 2013 Björn Albers
+Copyright (c) 2011-2014 Björn Albers
 
 MIT License
 
