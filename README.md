@@ -52,7 +52,7 @@ class Fancy < Nagios::Plugin
   end
 
   # Optional method that is executed once before determining the status.
-  def chec
+  def check
     @number = rand(10)
   end
 
