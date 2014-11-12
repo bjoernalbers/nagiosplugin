@@ -8,6 +8,7 @@ module Nagios
       before do
         allow(plugin).to receive_messages(
           output: '',
+          status: :unknown,
           check: nil)
         allow(Plugin).to receive_messages(
           puts: nil,
@@ -50,10 +51,10 @@ module Nagios
         expect(Plugin).to have_received(:new).with(42, fancy: true)
       end
 
-      it 'calls the plugin check callback first' do
+      it 'calls the plugin check callback before fetching the status' do
         Plugin.run!
         expect(plugin).to have_received(:check).ordered
-        expect(plugin).to have_received(:output).ordered
+        expect(plugin).to have_received(:status).ordered
       end
 
       context 'when an exception was raised' do

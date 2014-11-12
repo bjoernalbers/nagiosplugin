@@ -1,6 +1,6 @@
 module Nagios
   class Plugin
-    VERSION = '3.0.1'
+    VERSION = '3.0.2'
 
     EXIT_CODE =
       { unknown:  3,
